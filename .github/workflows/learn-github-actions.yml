@@ -10,6 +10,7 @@ jobs:
         with:
           node-version: "16"
           cache: "npm"
+
       - name: Cache node modules
         id: cache-nodemodules
         uses: actions/cache@v2
@@ -24,10 +25,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - uses: actions/cache@v2
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install Dependencies
         if:
